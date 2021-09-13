@@ -11,7 +11,8 @@ if (has('termguicolors'))
 endif
 
 set background=dark
-" let g:sonokai_style = 'andromeda'
+" for kitty see https://github.com/rsaihe/sonokai-kitty
+let g:sonokai_style = 'shusia'
 let g:sonokai_enable_italic = 1
 
 colorscheme sonokai
