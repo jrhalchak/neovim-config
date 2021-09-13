@@ -34,6 +34,10 @@ noremap L gt
 
 tnoremap <Esc> <C-\><C-n>
 
+noremap <C-s> :source ~/.config/nvim/init.vim<CR>
+noremap <C-w> :w<CR>
+noremap <C-q> :q<CR>
+
 " helper to identify syntax elements
 map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
 \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
