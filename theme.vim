@@ -10,7 +10,7 @@ if (has('termguicolors'))
   set termguicolors
 endif
 
-set background=light
+set background=dark
 " let g:sonokai_style = 'andromeda'
 let g:sonokai_enable_italic = 1
 
