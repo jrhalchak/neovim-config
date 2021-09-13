@@ -4,16 +4,32 @@
 call plug#begin('~/.vim/plugged')
 
 " See theme.vim
-Plug 'rakr/vim-one'
+Plug 'sainnhe/sonokai'
 
-Plug 'Shougo/defx.nvim'
-Plug 'kristijanhusak/defx-icons'
-source ~/.vim/defx-config.vim
+Plug 'vim-airline/vim-airline'
+let g:airline_powerline_fonts=1
 
-" Plug 'heavenshell/vim-jsdoc', { 
-"   \ 'for': ['javascript', 'javascript.jsx','typescript'], 
-"   \ 'do': 'make install'
-" \}
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+" REQUIRES ripgrep
+" Find files using Telescope command-line sugar.
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+
+Plug 'kyazdani42/nvim-web-devicons' " for file icons
+Plug 'kyazdani42/nvim-tree.lua'
+let g:nvim_tree_auto_open = 1 "0 by default, opens the tree when typing `vim $DIR` or `vim`
+let g:nvim_tree_auto_close = 1 "0 by default, closes the tree when it's the last window
+nnoremap <leader>r :NvimTreeRefresh<CR>
+nnoremap <leader>n :NvimTreeFindFile<CR>
+noremap <C-n> :NvimTreeToggle<CR>
+
+Plug 'heavenshell/vim-jsdoc', { 
+  \ 'for': ['javascript', 'javascript.jsx','typescript'], 
+  \ 'do': 'make install'
+\}
 
 " Plug 'ctrlpvim/ctrlp.vim'
 " let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
@@ -21,11 +37,11 @@ source ~/.vim/defx-config.vim
 " Plug 'easymotion/vim-easymotion'
 
 Plug 'tpope/vim-fugitive'
-" Plug 'scrooloose/nerdcommenter'
-" Plug 'tpope/vim-surround'
+Plug 'scrooloose/nerdcommenter'
+Plug 'tpope/vim-surround'
 
-" Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" let g:coc_global_extensions = ['coc-python', 'coc-tsserver', 'coc-prettier', 'coc-eslint', 'coc-sh', 'coc-css', 'coc-html', 'coc-lit-html', 'coc-json', 'coc-git']
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+let g:coc_global_extensions = ['coc-python', 'coc-tsserver', 'coc-prettier', 'coc-eslint', 'coc-sh', 'coc-css', 'coc-html', 'coc-lit-html', 'coc-json', 'coc-git']
 
 " coc mappings
 " inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"

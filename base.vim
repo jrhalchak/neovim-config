@@ -2,6 +2,7 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 set number
 set relativenumber
+set nuw=4
 set tabstop=2
 set shiftwidth=2
 set expandtab
@@ -37,6 +38,12 @@ tnoremap <Esc> <C-\><C-n>
 map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
 \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
 \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+
+augroup CursorLine
+  au!
+  au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
+  au WinLeave * setlocal nocursorline
+augroup END
 
 " TODO: figure out how to combine and ignore in case intended files aren't represented
 autocmd BufRead,BufNewFile .prettierrc set filetype=json
