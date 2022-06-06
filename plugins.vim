@@ -3,6 +3,8 @@
 " - Avoid using standard Vim directory names like 'plugin'
 call plug#begin('~/.vim/plugged')
 
+Plug 'vim-test/vim-test'
+
 " See theme.vim
 Plug 'sainnhe/sonokai'
 
@@ -18,13 +20,39 @@ nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
-Plug 'kyazdani42/nvim-web-devicons' " for file icons
-Plug 'kyazdani42/nvim-tree.lua'
-let g:nvim_tree_auto_open = 1 "0 by default, opens the tree when typing `vim $DIR` or `vim`
-let g:nvim_tree_auto_close = 1 "0 by default, closes the tree when it's the last window
-nnoremap <leader>r :NvimTreeRefresh<CR>
-nnoremap <leader>n :NvimTreeFindFile<CR>
-noremap <C-n> :NvimTreeToggle<CR>
+
+Plug 'preservim/nerdtree'
+" Plug 'PhilRunninger/nerdtree-visual-selection' ?
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'ryanoasis/vim-devicons'
+
+" Start NERDTree when Vim starts with a directory argument.
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists('s:std_in') |
+    \ execute 'NERDTree' argv()[0] | wincmd p | enew | execute 'cd '.argv()[0] | endif
+" Exit Vim if NERDTree is the only window remaining in the only tab.
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+
+nnoremap <leader>n :NERDTreeFocus<CR>
+" nnoremap <C-n> :NERDTree<CR>
+nnoremap <C-n> :NERDTreeToggle<CR>
+nnoremap <C-f> :NERDTreeFind<CR>
+
+" Plug 'kyazdani42/nvim-web-devicons' " for file icons
+" TODO: DON'T STAY ON THIS COMMIT, SOME SORT OF GOOFY BUGFIX
+" Plug 'kyazdani42/nvim-tree.lua', { 'commit': '3f4ed9b6c2598ab8304186486a0' }
+" " Plug 'kyazdani42/nvim-tree.lua'
+" " open_on_setup = 0 by default, opens the tree when typing `vim $DIR` or `vim`
+" " auto_close = 0 by default, closes the tree when it's the last window
+" lua << EOF
+" require'nvim-tree'.setup {
+"   open_on_setup = 1,
+"   auto_close = 1,
+"   }
+" EOF
+" nnoremap <leader>r :NvimTreeRefresh<CR>
+" nnoremap <leader>n :NvimTreeFindFile<CR>
+" noremap <C-n> :NvimTreeToggle<CR>
 
 Plug 'heavenshell/vim-jsdoc', { 
   \ 'for': ['javascript', 'javascript.jsx','typescript'], 
@@ -45,21 +73,24 @@ inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
 Plug 'leafgarland/typescript-vim'
 Plug 'mxw/vim-jsx'
 Plug 'othree/html5.vim'
 Plug 'alvan/vim-closetag'
-let g:closetag_filetypes = 'html,xhtml,phtml,javascript,typescript'
-let g:closetag_regions = {
-      \ 'typescript.tsx': 'jsxRegion,tsxRegion,litHtmlRegion',
-      \ 'javascript.jsx': 'jsxRegion,litHtmlRegion',
-      \ 'javascript':     'litHtmlRegion',
-      \ 'typescript':     'litHtmlRegion',
-      \ }
-
-Plug 'pangloss/vim-javascript'
 Plug 'jonsmithers/vim-html-template-literals'
+Plug 'pangloss/vim-javascript'
 Plug 'ap/vim-css-color'
+Plug 'sbdchd/neoformat'
+
+autocmd BufWritePre *.js Neoformat
+autocmd BufWritePre *.ts Neoformat
+autocmd BufWritePre *.html Neoformat
 
 "--- LIT highlighting and autclosing
 let g:htl_css_templates = 1

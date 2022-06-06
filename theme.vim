@@ -11,7 +11,6 @@ if (has('termguicolors'))
 endif
 
 set background=dark
-" for kitty see https://github.com/rsaihe/sonokai-kitty
 let g:sonokai_style = 'shusia'
 let g:sonokai_enable_italic = 1
 
