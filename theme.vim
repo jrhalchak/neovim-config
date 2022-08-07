@@ -11,9 +11,42 @@ if (has('termguicolors'))
 endif
 
 set background=dark
-let g:sonokai_style = 'shusia'
-let g:sonokai_enable_italic = 1
+" let g:sonokai_style = 'shusia'
+" let g:sonokai_enable_italic = 1
 
-colorscheme sonokai
+" colorscheme sonokai
+" colorscheme darkplus
+"
+set t_Co=256
+set t_ut=
+colorscheme codedark
 
+" General italic items
+hi Comment              gui=italic
+hi Conditional          gui=italic
+hi Include              gui=italic
+hi Keyword              gui=italic
+hi Label                gui=italic
+hi StorageClass         gui=italic
+hi Statement            gui=italic
+
+" JS Specific - May need to check python/other-langs
+hi jsFuncArgs           gui=bold
+hi jsOperatorKeyword    gui=italic
+
+" HTML Specific
+hi htmlArg              gui=italic
+hi htmlTag              gui=italic
+
+" Markdown Specific
+hi markdownH1           gui=bold            guifg=#D16969
+hi markdownH2           gui=bold            guifg=#ce9178
+hi markdownH3           gui=bold            guifg=#B5CEA8
+hi markdownH4           gui=bold            guifg=#c586c0
+hi markdownH5           gui=bold            guifg=#dcdcaa
+hi markdownH6           gui=bold            guifg=#9cdcfe
+
+hi markdownItalic       gui=italic
+hi markdownBold         gui=bold
+hi markdownBoldItalic   gui=bold,italic     guifg=#569cd6
 

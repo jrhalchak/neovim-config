@@ -6,7 +6,9 @@ call plug#begin('~/.vim/plugged')
 Plug 'vim-test/vim-test'
 
 " See theme.vim
-Plug 'sainnhe/sonokai'
+" Plug 'sainnhe/sonokai'
+" Plug 'martinsione/darkplus.nvim'
+Plug 'tomasiser/vim-code-dark'
 
 Plug 'vim-airline/vim-airline'
 let g:airline_powerline_fonts=1
@@ -37,27 +39,6 @@ nnoremap <leader>n :NERDTreeFocus<CR>
 " nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-n> :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
-
-" Plug 'kyazdani42/nvim-web-devicons' " for file icons
-" TODO: DON'T STAY ON THIS COMMIT, SOME SORT OF GOOFY BUGFIX
-" Plug 'kyazdani42/nvim-tree.lua', { 'commit': '3f4ed9b6c2598ab8304186486a0' }
-" " Plug 'kyazdani42/nvim-tree.lua'
-" " open_on_setup = 0 by default, opens the tree when typing `vim $DIR` or `vim`
-" " auto_close = 0 by default, closes the tree when it's the last window
-" lua << EOF
-" require'nvim-tree'.setup {
-"   open_on_setup = 1,
-"   auto_close = 1,
-"   }
-" EOF
-" nnoremap <leader>r :NvimTreeRefresh<CR>
-" nnoremap <leader>n :NvimTreeFindFile<CR>
-" noremap <C-n> :NvimTreeToggle<CR>
-
-Plug 'heavenshell/vim-jsdoc', { 
-  \ 'for': ['javascript', 'javascript.jsx','typescript'], 
-  \ 'do': 'make install'
-\}
 
 " Plug 'easymotion/vim-easymotion'
 
@@ -107,13 +88,14 @@ Plug 'jszakmeister/vim-togglecursor'
 Plug 'ryanoasis/vim-devicons'
 
 " post install (yarn install | npm install) then load plugin only for editing supported files
-Plug 'prettier/vim-prettier', {
-  \ 'do': 'yarn install',
-  \ 'for': ['javascript', 'typescript', 'json'] }
-" 'css', 'less', 'scss', 'graphql', 'markdown', 'vue', 'svelte', 'yaml', 'html',
+" Plug 'prettier/vim-prettier', {
+"   \ 'do': 'yarn install',
+"   \ 'for': ['javascript', 'typescript', 'json', 'html', 'css', 'scss'] }
+" 'less', 'graphql', 'markdown', 'vue', 'svelte', 'yaml',
 
 " End plugin system initialization
 call plug#end()
+
 "" PLUG COMMANDS
 " PlugInstall [name ...] [#threads]	Install plugins
 " PlugUpdate [name ...] [#threads]	Install or update plugins
