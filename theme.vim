@@ -36,7 +36,6 @@ hi jsOperatorKeyword    gui=italic
 
 " HTML Specific
 hi htmlArg              gui=italic
-hi htmlTag              gui=italic
 
 " Markdown Specific
 hi markdownH1           gui=bold            guifg=#D16969

@@ -61,11 +61,13 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
 Plug 'leafgarland/typescript-vim'
-Plug 'mxw/vim-jsx'
 Plug 'othree/html5.vim'
 Plug 'alvan/vim-closetag'
 Plug 'jonsmithers/vim-html-template-literals'
 Plug 'pangloss/vim-javascript'
+let g:javascript_plugin_jsdoc = 1
+
+Plug 'MaxMEllon/vim-jsx-pretty'
 Plug 'ap/vim-css-color'
 Plug 'sbdchd/neoformat'
 
@@ -78,8 +80,8 @@ let g:htl_css_templates = 1
 let g:htl_all_templates = 1
 let g:closetag_filetypes = 'html,xhtml,phtml,javascript,typescript'
 let g:closetag_regions = {
-      \ 'typescript.tsx': 'jsxRegion,tsxRegion,litHtmlRegion',
-      \ 'javascript.jsx': 'jsxRegion,litHtmlRegion',
+      \ 'typescriptreact': 'jsxRegion,tsxRegion,litHtmlRegion',
+      \ 'javascriptreact': 'jsxRegion,litHtmlRegion',
       \ 'javascript':     'litHtmlRegion',
       \ 'typescript':     'litHtmlRegion',
       \ }
@@ -87,11 +89,59 @@ let g:closetag_regions = {
 Plug 'jszakmeister/vim-togglecursor'
 Plug 'ryanoasis/vim-devicons'
 
-" post install (yarn install | npm install) then load plugin only for editing supported files
-" Plug 'prettier/vim-prettier', {
-"   \ 'do': 'yarn install',
-"   \ 'for': ['javascript', 'typescript', 'json', 'html', 'css', 'scss'] }
-" 'less', 'graphql', 'markdown', 'vue', 'svelte', 'yaml',
+Plug 'L3MON4D3/LuaSnip'
+Plug 'nvim-treesitter/nvim-treesitter'
+" Treesitter requires parsers, can install with :TSInstall <language_to_install>
+" where the language is anything supported by nvim-treesitter already
+" options as of 08-07-2022 are: astro, bash, beancount, bibtex, c, c_sharp, clojure, cmake, comment, commonlisp, cooklang, cpp, css, cuda, d, dart, devicetree, dockerfile, dot, eex, elixir, elvish, erlang, fennel, fish, foam, fusion, Godot, (maintained by @Shatur95) gleam, Glimmer and Ember, glsl, go, Godot Resources, (maintained by @pierpo) gomod, gowork, graphql, hcl, heex, help, hjson, hocon, html, http, java, javascript, jsdoc, json, json5, JSON with comments, julia, kotlin, lalrpop, latex, ledger, llvm, lua, m68k, make, markdown, markdown_inline, ninja, nix, norg, ocaml, ocaml_interface, ocamllex, pascal, perl, php, phpdoc, pioasm, prisma, proto, pug, python, ql, qmljs, Tree-sitter query language, r, racket, rasi, regex, rego, rnoweb, rst, ruby, rust, scala, scheme, scss, slint, solidity, sparql, sql, supercollider, surface, svelte, swift, teal, tiger, tlaplus, todotxt, toml, tsx, turtle, typescript, v, vala, verilog, vim, vue, wgsl, yaml, yang, zig
+
+" Plug 'danymat/neogen'
+" lua << EOF
+" require("neogen").setup {
+"   snippet_engine = "luasnip",
+"   enabled = true,
+"   languages = {
+"     lua = {
+"       template = {
+"         annotation_convention = "ldoc",
+"       },
+"     },
+"     python = {
+"       template = {
+"         annotation_convention = "google_docstrings",
+"       },
+"     },
+"     rust = {
+"       template = {
+"         annotation_convention = "rustdoc",
+"       },
+"     },
+"     javascript = {
+"       template = {
+"         annotation_convention = "jsdoc",
+"       },
+"     },
+"     javascriptreact = {
+"       template = {
+"         annotation_convention = "jsdoc",
+"       },
+"     },
+"     typescript = {
+"       template = {
+"         annotation_convention = "tsdoc",
+"       },
+"     },
+"     typescriptreact = {
+"       template = {
+"         annotation_convention = "tsdoc",
+"       },
+"     },
+"   }
+" }
+" EOF
+" 
+" " generate annotation
+" nnoremap <silent> <leader>nf :lua require'neogen'.generate()<CR>
 
 " End plugin system initialization
 call plug#end()
