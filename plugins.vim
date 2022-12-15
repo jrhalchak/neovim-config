@@ -8,13 +8,36 @@ Plug 'vim-test/vim-test'
 " See theme.vim
 " Plug 'sainnhe/sonokai'
 " Plug 'martinsione/darkplus.nvim'
-Plug 'tomasiser/vim-code-dark'
+" Plug 'tomasiser/vim-code-dark'
+Plug 'rakr/vim-one'
+let g:airline_theme='one'
+
+Plug 'lukas-reineke/indent-blankline.nvim'
+lua << EOF
+vim.opt.list = true
+vim.opt.listchars:append "space:⋅"
+vim.opt.listchars:append "eol:↴"
+EOF
+let g:indent_blankline_use_treesitter = v:true
+let g:indent_blankline_use_treesitter_scope = v:true
+let g:indent_blankline_show_current_context = v:true
+let g:indent_blankline_show_current_context_start = v:true
+let g:indent_blankline_show_current_context_start = v:true
+let g:indent_blankline_show_end_of_line = v:true
+let g:indent_blankline_space_char_blankline = '⋅'
+let g:indent_blankline_space_char = '⋅'
+let g:indent_blankline_char = '¦'
+let g:indent_blankline_context_char = '¦'
+let g:indent_blankline_context_char_blankline = '¦'
+let g:indent_blankline_char_blankline = '¦'
+let g:indent_blankline_show_curent_context = v:true
+let g:indent_blankline_show_curent_context_start = v:true
 
 Plug 'vim-airline/vim-airline'
 let g:airline_powerline_fonts=1
 
 Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
 " REQUIRES ripgrep
 " Find files using Telescope command-line sugar.
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
@@ -42,12 +65,14 @@ nnoremap <C-f> :NERDTreeFind<CR>
 
 " Plug 'easymotion/vim-easymotion'
 
+Plug 'delphinus/vim-firestore'
+
 Plug 'tpope/vim-fugitive'
 Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-surround'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-let g:coc_global_extensions = ['coc-python', 'coc-tsserver', 'coc-prettier', 'coc-eslint', 'coc-sh', 'coc-css', 'coc-html', 'coc-lit-html', 'coc-json', 'coc-git']
+let g:coc_global_extensions = ['coc-python', 'coc-tsserver', 'coc-prettier', 'coc-eslint', 'coc-sh', 'coc-css', 'coc-html', 'coc-lit-html', 'coc-json', 'coc-git', 'coc-flow']
 
 " coc mappings
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
@@ -75,6 +100,13 @@ autocmd BufWritePre *.js Neoformat
 autocmd BufWritePre *.ts Neoformat
 autocmd BufWritePre *.html Neoformat
 
+Plug 'godlygeek/tabular'
+
+"--- Has MD codeblock highlighting
+Plug 'preservim/vim-markdown'
+"--- Runs browser preview as plugin
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+
 "--- LIT highlighting and autclosing
 let g:htl_css_templates = 1
 let g:htl_all_templates = 1
@@ -89,7 +121,7 @@ let g:closetag_regions = {
 Plug 'jszakmeister/vim-togglecursor'
 Plug 'ryanoasis/vim-devicons'
 
-Plug 'L3MON4D3/LuaSnip'
+" Plug 'L3MON4D3/LuaSnip'
 Plug 'nvim-treesitter/nvim-treesitter'
 " Treesitter requires parsers, can install with :TSInstall <language_to_install>
 " where the language is anything supported by nvim-treesitter already
