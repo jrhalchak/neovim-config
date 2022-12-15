@@ -1,0 +1,16 @@
+alias vi="nvim"
+alias vim="vi"
+alias vidc="nvim -u \"NONE\""
+alias gg="git log --graph --abbrev-commit --decorate --oneline"
+alias ctags='/usr/local/bin/ctags'
+alias icat="kitty +kitten icat"
+
+# oh-my-zsh seems to enable this by default, not desired for 
+# workflow of controlling terminal title.
+DISABLE_AUTO_TITLE="true"
+
+function stt() {
+  echo -en "\e]2;$@\a"
+}
+
+eval $(thefuck --alias)
